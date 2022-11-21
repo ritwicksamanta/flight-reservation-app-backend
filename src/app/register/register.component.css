@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+.container-body{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(159deg, rgba(2, 0, 36, 1) 6%, rgba(40, 40, 87, 1) 48%, rgba(24, 105, 94, 1) 100%);
+  overflow: hidden;
+
+}
+
+
+
+.form-container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding-left: 0%;
+  padding-right: 0%;
+  box-shadow: 2px 6px 6px -1px;
+}
+
+
+.card{
+  background: linear-gradient(125deg, rgba(187, 183, 183, 0.75),rgba(254, 250, 250, 0.25));
+  box-shadow: 2px 6px 6px -2px #000;
+  color: #fff;
+}
+
+.card-title{
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+}
+
+.mat-form-field{
+  color: #fff;
+}
+
+
+/* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #fff;
+  -border-radius: 25px;
+  color:none;
+} */
+
+:host ::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: #fff !important;
+  font-family: 'Poppins' sans-serif;
+  font-style: italic;
+}
+
+.mat-form-field{
+  width: 365px;
+}
+
+
+.mat-form-field-should-float {
+font-size: 14px;
+}
+
+
+
+.input-group{
+  /*left: 15%;*/
+  align-items: flex-start;
+}
+
+
+.name .mat-form-field+.mat-form-field{
+  margin-left: 20.75px;
+  position: relative !important;
+}
+
+.identity .mat-form-field+.mat-form-field,.password .mat-form-field+.mat-form-field{
+  margin-left: 2.75%;
+  position: relative !important;
+}
+.name .mat-form-field:nth-child(2){
+  margin-left: 20%;
+}
+
+.full-width{
+  width: 100%;
+
+}
+
+.mat-error, .error-label{
+  color: rgb(210, 14, 14);
+  font-size: 15px;
+  font-family: cursive;
+  /* font-weight: bold;
+  word-spacing: 0pt; */
+}
+
+.mat-icon{
+  color: #570763;
+}
+
+.eye{
+  color: #060606;
+}
+
+.check{
+  color: #055705;
+  transform: scale(1.5);
+  font-weight: bold;
+}
+
+.spacer{
+  display: inline-flex;
+  flex: 1 1 auto;
+  margin-left: 2rem;
+}
+
+div .form-check{
+  position: relative;
+  margin-top: 5%;
+}
+
+/* ::ng-deep .mat-form-field-subscript-wrapper{
+  position: relative !important;
+} */
+
+.right{
+  background-image: url(/assets/images/register.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+.right:hover{
+  box-shadow: 3px 8px 8px -2px;
+  transform: scale(1.05);
+}
+
+/**
+******** alert *******
+*/
+
+
+.colored-toast .swal2-icon-success{
+  background-color: #2b6609 !important;
+}
+
+.colored-toast .swal2-title {
+  color: white;
+}
+
+.colored-toast .swal2-close {
+  color: white;
+}
+
+.colored-toast .swal2-html-container {
+  color: white;
+}
+
+
+/**
+  login link
+*/
+.mat-card-footer span a{
+  text-decoration: none;
+  line-height: 36px;
+  color: #6f0363;
+  position: relative;
+  font-weight: bolder;
+  cursor: progress;
+  font-family: 'Nunito', sans-serif;
+}
+
+.mat-card-footer{
+  font-size: 16px;
+  font-style: italic;
+}
+
+.decor{
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.5s;
+}
+
+.mat-card-footer span a:hover .decor{
+  width: 100%;
+}

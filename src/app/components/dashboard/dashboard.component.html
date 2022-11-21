@@ -1,0 +1,144 @@
+<div class="container banner">
+  <div class="row ">
+    <div class="col-md-8 col-12 col-sm-5">
+      <div class="jumbotron jumbotron-fluid">
+        <mat-card class="card card-block">
+          <!--profile card header -->
+          <mat-card-header class="card-header">
+            <div class="greet">
+              <mat-card-title class="title">Welcome</mat-card-title>
+            </div>
+            <span class="spacer"></span>
+            <div class="card-image">
+              <img src="/assets/images/dashboard-profile.png" alt="" class="rounded float-right img-responsive"
+                height="100px">
+            </div>
+
+            <div class="icon">
+              <img src="/assets/images/user_image_placeholder.png" alt="" class="thumbnail img-responsive ">
+            </div>
+          </mat-card-header>
+          <!-- profile card body -->
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 text-center">
+                <mat-card-subtitle class="profile-name">
+                  {{user_name|titlecase}}
+                </mat-card-subtitle>
+
+              </div>
+              <div class="col-md-5 offset-md-3 col-sm-6">
+                <div class="profile">
+                  <mat-card-title class="profile-text">
+                    Profile
+                  </mat-card-title>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85"
+                      aria-valuemin="0" aria-valuemax="100">85%</div>
+                  </div>
+                  <div class="button" (click)="openProfileView()">
+                    <button type="button" mat-raised-button color="primary">View Profile
+                      <mat-icon>arrow_right</mat-icon>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+    <!--side links part-->
+    <div class="offset-md-1 col-md-3 col-sm-4 links">
+      <div class="row">
+        <div class="col-12">
+          <mat-list class="text-center">
+            <!-- <a mat-list-item mat-raised-button  class="link-item ">
+
+            </a> -->
+            <mat-list-item class="link-item" *ngIf="user['roles']=='ROLE_ADMIN'">
+              <a mat-button (click)="addFlightDialog()">
+                <mat-icon>add_box</mat-icon>
+                <span>Add Flight</span>
+              </a>
+            </mat-list-item>
+            <mat-list-item class="link-item">
+              <a  mat-button [routerLink]="'search'">
+                <mat-icon>travel_explore</mat-icon>
+                <span>Search Flights</span>
+              </a>
+            </mat-list-item>
+
+            <mat-list-item class="link-item">
+              <a mat-button [routerLink]="'search'">
+                <mat-icon>airplane_ticket</mat-icon>
+                <span>Book Ticket</span>
+              </a>
+            </mat-list-item>
+
+            <mat-list-item class="link-item">
+              <a mat-button (click)="viewAllBookings()">
+                <mat-icon>confirmation_number</mat-icon>
+                <span>View Bookings</span>
+              </a>
+            </mat-list-item>
+            <mat-list-item class="link-item">
+              <a  mat-button class="link-button" (click)="viewAllBookings()">
+                <mat-icon>delete_forever</mat-icon>
+                <span>Cancel Booking</span>
+              </a>
+            </mat-list-item>
+            <!-- <a mat-list-item mat-raised-button  class="link-item">
+              <mat-icon>travel_explore</mat-icon>
+              <span>Search Flights</span>
+            </a>
+            <a mat-list-item mat-raised-button  class="link-item">
+              <mat-icon>confirmation_number</mat-icon>
+              <span>View Tickets</span>
+            </a>
+            <a mat-list-item mat-raised-button  class="link-item">
+              <mat-icon>airplane_ticket</mat-icon>
+              <span>Book Tickets</span>
+            </a>
+
+            <a mat-list-item mat-raised-button  class="link-item">
+              <mat-icon>add_box</mat-icon>
+              <span>Add Flight</span>
+            </a>
+             -->
+          </mat-list>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--cards area-->
+  <div class="row">
+    <!--recent bookings-->
+    <div class="col-md-5 col-sm-6">
+      <div class="jubotron jumbotron-fluid">
+        MOST RECENT BOOKINGS
+        <!-- <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
+          <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+            <th mat-header-cell *matHeaderCellDef>
+              {{column.header}}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{column.cell(element)}}
+            </td>
+          </ng-container>
+        </table> -->
+        <app-bookings-table [email]="user.email"></app-bookings-table>
+      </div>
+    </div>
+    <!--chart-->
+    <div class="col-md-6 col-sm-6 offset-md-1">
+      <mat-card class="jumbotron jumbotron-fluid chart-card" fxFlexAlign="stretch">
+        <app-chart [user]="this.user"></app-chart>
+        <!--chart-->
+         
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark mt-0 mb-0 pb-0 pt-0 fixed-top navbar-expand-md">
+  <a [routerLink]="['/home']" class="navbar-brand">
+    <img [src]="logo" alt="Logo" class="img img-fluid">
+  </a>
+
+  <a class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbarCollapse()"
+    >
+    <mat-icon>menu</mat-icon>
+</a>
+
+  <!--Menu-->
+  <div class="navbar-collapse menu" id="navbarCollapse" [class.collapse]="navbarCollapsed">
+    <!--for home page only-->
+    <ul class="navbar-nav mr-auto" *ngIf="isHomePage()">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" mat-button [routerLink]="['/dashboard/search']">Flights</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" mat-raised-button [routerLink]="['/login']"><span></span>Log In/ Sign Up</a>
+      </li>
+    </ul>
+
+    <!--else login-->
+    <ul class="navbar-nav mr-auto" *ngIf="isLoginPage()">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" mat-raised-button [routerLink]="['/register']"><span></span>Sign Up</a>
+      </li>
+    </ul>
+
+    <!--else register-->
+    <ul class="navbar-nav mr-auto" *ngIf="isRegisterPage()">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a  class="nav-link" mat-raised-button [routerLink]="['/login']"><span></span>Log In</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>

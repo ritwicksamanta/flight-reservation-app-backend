@@ -1,0 +1,24 @@
+<mat-nav-list>
+
+  <a class="menu" mat-list-item (click)="isExpanded=!isExpanded;
+  this.expand.emit({
+    expanded:this.isExpanded
+  })">
+    <mat-icon >menu</mat-icon><span class="logo py-4" *ngIf="isExpanded">
+      <img src="/assets/images/dashboard_logo.png" alt="Company Logo">
+    </span>
+  </a>
+  <!-- <h2 matSubheader class="mt-0 text-center" *ngIf="isExpanded">APPLICATIONS</h2> -->
+  <mat-divider *ngIf="isExpanded"></mat-divider>
+  <div class="links">
+    <a routerLink="/dashboard" [class.list-item-active]="this._router.url==='/dashboard'" mat-list-item>
+      <mat-icon>dashboard</mat-icon> <span *ngIf="isExpanded">Home</span>
+    </a>
+
+    <a [routerLink]="['./search']" routerLinkActive="list-item-active"  mat-list-item> <!--[class.list-item-active]="this._router.url==='/dashboard/search'"
+                                                                                          add this in case routerLinkActive does not works-->
+      <mat-icon>search</mat-icon> <span *ngIf="isExpanded">Search</span>
+    </a>
+  </div>
+
+</mat-nav-list>

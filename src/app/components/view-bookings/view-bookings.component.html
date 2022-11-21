@@ -1,0 +1,37 @@
+<button type="button" mat-dialog-close="true" mat-icon-button>
+  <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+  <table class="mat-elevation-z8 mt-3 text-center">
+    <thead>
+      <tr>
+        <th>Booking Id</th>
+        <th>Source Location</th>
+        <th>Destination</th>
+        <th>Booking Date</th>
+        <th>Date Of Journey</th>
+        <th>Boarding Time</th>
+        <th>Gate Number</th>
+        <th>Number of Seats</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{booking.bookingId}}</td>
+        <td>{{booking.fromLocation}}</td>
+        <td>{{booking.toLocation}}</td>
+        <td>{{booking.bookingDate}}</td>
+        <td>{{booking.date}}</td>
+        <td>{{booking.boardingTime}}</td>
+        <td>{{booking.gateNo}}</td>
+        <td>{{booking.seatNo.length}}</td>
+        <td>
+          <a mat-button (click)="doCancel(booking)">
+            Cancel Booking
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>

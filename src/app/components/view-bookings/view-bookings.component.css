@@ -1,0 +1,5 @@
+:host table{
+  width: 100%!important;
+  border-collapse: separate!important;
+  border-spacing: 10px!important;
+}

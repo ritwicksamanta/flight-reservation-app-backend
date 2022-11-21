@@ -1,0 +1,54 @@
+<button type="button" [mat-dialog-close]="true" mat-icon-button>
+  <mat-icon>close-icon</mat-icon>
+</button>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Airline Name</mat-label>
+      <input type="text" matInput formControlName="airlineName" readonly>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Source</mat-label>
+      <input type="text" readonly formControlName="source" matInput>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Destination</mat-label>
+      <input type="text" readonly matInput formControlName="destination">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearence="outline">
+      <mat-label>Date</mat-label>
+      <input type="text" readonly matInput formControlName="date">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Boarding Time</mat-label>
+      <input type="text" matInput readonly formControlName="boardingTime">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Flight Id</mat-label>
+      <input type="text" matInput formControlName="flightId" readonly>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Customer Email</mat-label>
+      <input type="text" matInput  readonly [value]="user_id">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Choose Seat</mat-label>
+      <mat-select formControlName="seatNo" multiple>
+        <mat-option *ngFor="let seat of this.data.seats" [value]="seat">{{seat}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.form.get('seatNo').errors?.['required']">This fileld can't be empty</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="submit" mat-raised-button color="primary"
+  [disabled]="this.form.invalid" (click)="bookFlight(this.form.value)">Confirm Booking</button>
+  <button type="reset" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

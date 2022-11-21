@@ -1,0 +1,53 @@
+<button type="button" mat-icon-button class="close-button" [mat-dialog-close]="true" [autofocus]="false">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+
+<mat-dialog-content>
+  <h1>Add Flight Details</h1>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Airline Name</mat-label>
+      <input type="text" matInput formControlName="airlineName" placeholder="Airline Name">
+      <mat-error *ngIf="this.form.get('airlineName').errors?.['required']">This field can't be empty</mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Source</mat-label>
+      <input type="text" matInput placeholder="Source Location" formControlName="fromLocation">
+      <mat-error *ngIf="this.form.get('fromLocation').errors?.['required']">This field is required</mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Destination</mat-label>
+      <input type="text" matInput formControlName="toLocation" placeholder="Destination">
+      <mat-error *ngIf="this.form.get('toLocation').errors?.['required']">This field is required</mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Boarding Time</mat-label>
+      <input matInput [format]="24" placeholder="16:00" [ngxMatTimepicker]="picker" readonly formControlName="boardingTime">
+      <ngx-mat-timepicker #picker color="accent"></ngx-mat-timepicker>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="datepicker" [disabled]="true" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker [disabled]="false" color="accent"></mat-datepicker>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Seat Count</mat-label>
+      <input matInput formControlName="totalSeat" type="number">
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Gate Number</mat-label>
+      <input matInput formControlName="gateNo" type="number">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" cdkFocusInitial [disabled]="this.form.invalid" color="primary" (click)="addFlight(this.form.value)">Add Flight</button>
+  <button type="reset" (click)="dialogRef.close()" mat-raised-button color="warn">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <!-- <button mat-icon-button (click)="expand=!expand;
+    expanded.emit({expand:this.expand})">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <span *ngIf="!this._isExpanded">
+      <img class="logo" src="/assets/images/dashboard_logo.png" alt="Company Logo">
+    </span>
+    <span class="spacer"></span>
+    <div class="profile">
+      <button type="button" mat-icon-button disabled>
+        <mat-icon class="profile-icon">account_circle</mat-icon>
+      </button>
+      <span [style.font-size]="'20px'">{{user_name|titlecase}}</span>
+      <button type="button" matSuffix mat-icon-button aria-label="profile menu button" [matMenuTriggerFor]="menu">
+        <mat-icon class="menu-button">
+          arrow_drop_down
+        </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button type="button"  mat-menu-item (click)="logout()">
+          <span>Log Out</span> &nbsp;
+          <mat-icon matSuffix>logout</mat-icon>
+        </button>
+
+      </mat-menu>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

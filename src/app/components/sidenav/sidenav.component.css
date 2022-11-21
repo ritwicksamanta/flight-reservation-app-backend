@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,300;1,400;1,500;1,600&display=swap');
+
+:host{
+  font-family: 'Montserrat',sans-serif;
+  overflow: hidden;
+}
+
+
+.logo{
+  text-align: center;
+  /* padding: 2.6rem 1rem; */
+}
+
+.logo img{
+  width: 150px;
+}
+
+.mat-icon{
+  vertical-align: center;
+  margin-right: 1rem;
+
+}
+
+/* h2, a{
+  margin-left: 1rem;
+  vertical-align: center;
+} */
+.with-icon{
+  position: relative;
+  top: -7px;
+  font-size: 22px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+
+.mat-divider{
+  border-top-width: 2pt;
+  border-color:#fff;
+}
+
+.mat-list-item,.menu{
+  color: #f2f5f7 !important;
+  font-size: 1rem;
+  height: 44px !important;
+  margin-bottom: 4px;
+
+
+}
+:host ::ng-deep .mat-list-item-content:not(.menu):hover{
+  background-color: #284a58 !important;
+  margin-right: 0%;
+}
+
+
+:host ::ng-deep .mat-list-item-content{
+  border-radius: 25px 0 0 25px ;
+  margin: 0px;
+}
+
+:host ::ng-deep .menu{
+  margin:0% !important;
+}
+
+.menu{
+  display: inline-flex!important;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.list-item-active ::ng-deep .mat-list-item-content{
+  background-color: #2c3344 !important;
+  margin-right: 0%;
+}
+
+.list-item-active ::ng-deep .mat-list-item-content:hover{
+  background-color: #2c3344 !important;
+}
+
+.mat-subheader{
+  color: #818cf8;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: cursive;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+
+.links{
+  margin-top: 1rem;
+}

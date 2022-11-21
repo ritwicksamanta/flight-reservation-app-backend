@@ -1,0 +1,23 @@
+.mat-form-field + .mat-form-field {
+  margin-left: 6px;
+}
+
+
+.material-icons .color_white{
+  color: #fff;
+}
+.close-button{
+  float: right;
+  top: -24px;
+  right: -24px;
+}
+
+.close-icon{
+  transition: 0.5s ease-in-out;
+}
+
+.close-icon:hover{
+  transform: rotate(90deg);
+  color: rgba(132, 5, 5, 0.788);
+}
+

@@ -1,0 +1,71 @@
+
+<div class="container banner">
+  <div class="row row-1" [ngClass]="{rowup: showTable==true}">
+    <div class="col-md-10 col-12 col-sm-6">
+      <div class="jumbotron jumbotron-fluid">
+        <mat-card class="card card-block">
+          <mat-card-content>
+            <form action="" [formGroup]="form">
+              <mat-form-field appearance="outline">
+                <mat-label>Source</mat-label>
+                <input matInput placeholder="Source" formControlName="formLocation">
+                <mat-error *ngIf="form.get('formLocation').errors?.['required']">This field is required </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Destination</mat-label>
+                <input matInput placeholder="Destination" formControlName="toLocation">
+                <mat-error *ngIf="form.get('toLocation').errors?.['required']">This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>From</mat-label>
+                <input matInput [matDatepicker]="datepicker" [disabled]="true" formControlName="fromDate">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker [disabled]="false"></mat-datepicker>
+                <mat-error *ngIf="form.get('fromDate').errors?.['required']">This field can't be empty</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>end</mat-label>
+                <input matInput [matDatepicker]="enddatepicker" [disabled]="true" formControlName="toDate">
+                <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #enddatepicker [disabled]="false"></mat-datepicker>
+                <mat-error *ngIf="form.get('toDate').errors?.['required']">This field is required</mat-error>
+                <mat-error *ngIf="form.get('toDate').dirty &&  form.get('fromDate').dirty && form.errors?.['constraintViolation']">
+                  Search end date must be before start date
+                </mat-error>
+              </mat-form-field>
+              &nbsp;
+              <button type="submit" mat-button (click)="searchFlight();showTable=true">Search
+                <mat-icon>search</mat-icon>
+              </button>
+              <button type="reset" mat-button color="warn" >Reset</button>
+            </form>
+
+            <!--table-->
+
+          </mat-card-content>
+        </mat-card>
+        <table class="mat-elevation-z8 mt-3 text-center" *ngIf="showTable">
+          <tr >
+            <th *ngFor="let column of columns">{{column.header}}</th>
+          </tr>
+          <tr *ngFor="let flight of this.flights">
+            <td>{{flight.flightId}}</td>
+            <td>{{flight.airlineName}}</td>
+            <td>{{flight.date}}</td>
+            <td>{{flight.boardingTime}}</td>
+            <td>{{flight.gateNo}}</td>
+            <td>{{flight.totalSeat}}</td>
+            <td>
+              <a  mat-flat-button (click)="bookFlight(flight)">
+                Book
+              </a>
+            </td>
+          </tr>
+          <tr *ngIf="flights.length==0">
+            <td [colSpan]="6">{{'No data Found'|titlecase}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

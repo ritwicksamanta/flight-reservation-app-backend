@@ -1,0 +1,21 @@
+.row-1{
+  margin-top: 15%;
+  justify-content: center;
+}
+
+.element-spacer{
+  flex: 1 1 auto;
+}
+:host .card{
+  padding-right: 0px!important;
+  padding-bottom: 10px!important;
+}
+
+:host table{
+  width: 100%!important;
+  border-collapse: separate!important;
+}
+
+.rowup{
+  margin-top: 6%!important;
+}

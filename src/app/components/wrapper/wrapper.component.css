@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,300;1,400;1,500;1,600&display=swap');
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mat-drawer{
+  -width: 270px;
+  background-color: #0f1016;
+}
+
+mat-drawer-container{
+  height: 100vh;
+}
+
+.mat-list-icon{
+  -color:#fff;
+}
+
+/* .mat-drawer-content{
+  margin-left:5%!important;
+} */

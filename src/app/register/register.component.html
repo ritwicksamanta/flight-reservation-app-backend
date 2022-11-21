@@ -1,0 +1,148 @@
+<div class="container-fluid container-body">
+  <app-header class="header"></app-header>
+  <div class="container mt-1">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="form-container  container">
+
+          <div class="form" fxFlex="60%">
+            <mat-card class="card">
+              <mat-card-title class="card-title text-center ">Sign up</mat-card-title>
+              <mat-card-content class="input-group">
+                <form method="post" [formGroup]="form" (ngSubmit)="register(this.form.value)">
+
+                  <div class="name full-width">
+
+                    <!--firstName-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input type="text" matInput formControlName="firstName" placeholder="Alex" required>
+                      <mat-error *ngIf="this.form.get('firstName').errors?.['serverError']">{{this.form.get('firstName').errors['serverError']}}</mat-error>
+                      <mat-error *ngIf="this.form.get('firstName').errors?.['required']">
+                        {{"name can't be empty"|titlecase}}
+                      </mat-error>
+                    </mat-form-field>
+
+                    <!--lastName-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last Name</mat-label>
+
+                      <input type="text" matInput formControlName="lastName" placeholder="Joe" required>
+                      <mat-error *ngIf="this.form.get('lastName').errors?.['serverError']">{{this.form.get('lastName').errors['serverError']}}</mat-error>
+                      <mat-error *ngIf="this.form.get('lastName').errors?.['required']">
+                        {{"name can't be empty"|titlecase}}
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+
+                  <!--address-->
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Address</mat-label>
+                    <mat-icon matPrefix>home</mat-icon>
+                    <textarea name="address" matInput formControlName="address" [style.resize]="'none'" rows="2"
+                      placeholder="123,Menlo Park,CA5">
+                    </textarea>
+                    <mat-error *ngIf="this.form.get('address').errors?.['serverError']">{{this.form.get('address').errors['serverError']}}</mat-error>
+                  </mat-form-field>
+
+                  <div class="identity full-width">
+                    <!--phone number-->
+                    <mat-form-field appearance="outline">
+                      <mat-icon matPrefix>call</mat-icon>
+                      <mat-label>Phone Number</mat-label>
+                      <input type="tel" matInput formControlName="phoneNumber" placeholder="987******" [minlength]="10" [maxLength]="11">
+                      <mat-error *ngIf="this.form.get('phoneNumber').errors?.['serverError']">{{this.form.get('phoneNumber').errors['serverError']}}</mat-error>
+                      <mat-error *ngIf="this.form.get('phoneNumber').errors?.['pattern']">{{'Invalid Mobile Number'|titlecase}}</mat-error>
+                    </mat-form-field>
+
+                    <!--email-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <mat-icon matPrefix>mail</mat-icon>
+                      <input type="email" name="email" matInput formControlName="email" placeholder="john.doe@email.com" required>
+                      <mat-error *ngIf="this.form.get('email').errors?.['serverError']">{{this.form.get('email').errors['serverError']}}</mat-error>
+                      <mat-error *ngIf="this.form.get('email').errors?.['required']">{{'this field can\'t be empty'|titlecase}}</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="password full-width">
+                    <!--Password-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <mat-icon  matPrefix class="key">
+                        key
+                      </mat-icon>
+                      <input matInput formControlName="password" placeholder="********" required [type]="p_visible?'text':'password'">
+                      <button type="button" (click)="p_visible=!p_visible" matSuffix mat-icon-button>
+                        <mat-icon class="eye">{{p_visible?'visibility_off':'visibility'}}</mat-icon>
+                      </button>
+                      <!-- <mat-error *ngIf="error">{{error.password}}</mat-error> -->
+                      <mat-error *ngIf="form.get('password').errors?.['required']">
+                        {{"This field can't be left empty"}}
+                      </mat-error>
+
+                        <mat-error *ngIf="form.get('password').errors?.['serverError']">
+                          <div class="error">
+                            {{form.get('password').errors?.['serverError']}}
+                          </div>
+                        </mat-error>
+
+                    </mat-form-field>
+
+                    <!--Confirm Password-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Confirm Password</mat-label>
+                      <mat-icon matPrefix>vpn_key</mat-icon>
+                      <input matInput type="password" formControlName="confirmPassword" placeholder="********" required >
+                      <mat-icon matSuffix class="check" *ngIf="form.errors?.['noMatch']===null && this.form.get('password').value">check</mat-icon>
+                      <mat-hint class="error-label" *ngIf="this.form.errors?.['noMatch']">{{'Password do Not Match'|titlecase}}</mat-hint>
+                      <mat-error>{{"This field can't be left empty"}}</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <!--Terms & Conditions-->
+                  <div class="form-group form-check">
+                    <!-- <input type="checkbox" name="acceptTerms" id="acceptTerms"
+                    formControlName="tc" class="form-check-input">
+
+                    <label for="acceptTerms" class="form-check-label">
+                      Accept Terms & Conditions</label> -->
+
+                    <mat-checkbox formControlName="tc">
+                      Accept Terms & Conditions
+                    </mat-checkbox>
+                    <mat-error *ngIf="this.submitted || form.get('tc').invalid && (this.form.dirty || this.form.get('tc').touched)">
+                      Please, Accept Terms & Conditions
+                    </mat-error>
+                    <div ></div>
+                  </div>
+
+
+                  <div class="container text-center">
+                    <button type="submit" mat-raised-button
+                     [disabled]="this.form.invalid"> Submit</button>
+                     <span class="spacer"></span>
+                    <button type="reset" mat-raised-button color="accent">Clear</button>
+                  </div>
+                </form>
+              </mat-card-content>
+              <!-- <div class="error" *ngIf="form.get('password').errors?.['serverError']" >
+                {{form.get('password').errors?.['serverError']}}
+              </div> -->
+              <mat-card-footer class="text-center">
+                already have an account? <span><a (click)="renderLoginPage()"><span class="decor"></span>Login</a></span>
+              </mat-card-footer>
+            </mat-card>
+
+          </div>
+
+          <div class="right" fxFlex="40%">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<!--
+<div class="banner">
+  <div class="container-fluid">
+    <app-header></app-header>
+
+  </div>
+</div>
+
+-->
+<div class="container-fluid banner">
+  <app-header></app-header>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+        <mat-card class="form-container centered">
+          <mat-card-title class="text-center">
+            <img mat-card-md-image class="image-fluid" [style.height]="'65px'" [style.width]="'65px'"
+              src="/assets/images/login-icon.png" />
+          </mat-card-title>
+          <mat-card-content>
+
+            <form action="" [formGroup]="form" method="post" (ngSubmit)="doLogin(this.form.value)">
+              <mat-form-field class="full-width">
+                <mat-label>{{'User name'|titlecase}}</mat-label>
+                <input matInput placeholder="john@email.com" formControlName="userName" type="email" id="userName"
+                  required />
+                <button mat-icon-button matPrefix [attr.aria-label]="'User Name'" disabled>
+                  <mat-icon>account_circle</mat-icon>
+                </button>
+                <mat-error [style.font-size]="'12px'">
+                  <div class="field-error"
+                    *ngIf="form.get('userName').invalid && (form.get('userName').dirty || form.get('userName').touched)">
+                    <div *ngIf="form.get('userName').errors?.['required']">User Name cannot be blank</div>
+                    <div *ngIf="form.get('userName').errors?.['pattern']">Invalid Email Format</div>
+                  </div>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input [type]="this.visible?'text':'password'" matInput placeholder="******" formControlName="password"
+                  required>
+                <button mat-icon-button matPrefix disabled>
+                  <mat-icon>lock</mat-icon>
+                </button>
+                <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()">
+                  <mat-icon>{{this.visible?'visibility_off':'visibility'}}</mat-icon>
+                </button>
+                <mat-error [style.font-size]="'12px'">
+                  <div class="field-error"
+                    *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
+                    Password cannot be blank
+                  </div>
+                </mat-error>
+              </mat-form-field>
+
+              <div class="container text-center">
+                <button type="submit" mat-raised-button color="primary" [disabled]="!this.form.valid">Login</button>
+                &nbsp;&nbsp;&nbsp;
+                <button type="reset" mat-raised-button color="warn">Reset</button>
+              </div>
+            </form>
+          </mat-card-content>
+          <mat-card-footer class="text-center">
+            Don't have an account? <span><a (click)="registerNew()"><span class="decor"></span>Sign Up</a></span>
+          </mat-card-footer>
+          
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

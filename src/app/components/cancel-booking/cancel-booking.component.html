@@ -1,0 +1,44 @@
+<button type="button" mat-icon-button mat-dialog-close="true">
+  <mat-icon>close</mat-icon>
+</button>
+
+<mat-dialog-content>
+  <table>
+    <caption>Booking Details</caption>
+    <tr>
+      <th>Booking ID</th>
+      <td>{{data.bookingId}}</td>
+    </tr>
+    <tr>
+      <th>Source Location</th>
+      <td>{{data.fromLocation}}</td>
+    </tr>
+    <tr>
+      <th>Destination</th>
+      <td>{{data.toLocation}}</td>
+    </tr>
+    <tr>
+      <th>Booking Date</th>
+      <td>{{data.bookingDate}}</td>
+    </tr>
+    <tr>
+      <th>Date Of Journey</th>
+      <td>{{data.date}}</td>
+    </tr>
+    <tr>
+      <th>Boarding Time</th>
+      <td>{{data.boardingTime}}</td>
+    </tr>
+    <tr>
+      <th>Gate Number</th>
+      <td>{{data.gateNo}}</td>
+    </tr>
+    <tr>
+      <th>Seats</th>
+      <td>{{data.seatNo}}</td>
+    </tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" mat-dialog-close (click)="cancel()" mat-raised-button color="warn">Confirm</button>
+</mat-dialog-actions>

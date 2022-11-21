@@ -1,0 +1,30 @@
+<div class="container app-error">
+
+  <mat-grid-list [cols]="this.cols">
+    <mat-grid-tile >
+      <div class="img" [class.error]='true'>
+        <img [src] = 'this.image_uri' width="500px">
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="card-text">
+
+        <h2>Oops!! Page Not found</h2>
+        <h1>
+          404
+        </h1>
+        <h2>we can't find the page you are looking for</h2>
+
+        <div class="footer">
+          <a mat-raised-button color="accent" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+            Go Back to Home
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </div>
+
+      </div>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>

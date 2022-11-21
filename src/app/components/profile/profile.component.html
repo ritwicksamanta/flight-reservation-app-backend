@@ -1,0 +1,28 @@
+<button type="button" mat-icon-button class="close-button" [mat-dialog-close]="true" [autofocus]="false">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<mat-dialog-content>
+  <table>
+    <!--<thead>
+       <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let column of columns">{{this.data[column]}}</td>
+      </tr>
+    </tbody> -->
+    <caption>User Profile Details</caption>
+    <tr *ngFor="let item of columns">
+      <td [style]="'background-color: aqua;'">{{item|uppercase}}</td>
+      <td>{{this.data[item]}}</td>
+    </tr>
+  </table>
+</mat-dialog-content>

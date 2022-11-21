@@ -1,0 +1,98 @@
+*{
+  top: 0%;
+}
+.img{
+  margin-left: 10px;
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+nav a{
+  padding: 0;
+}
+nav{
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(120deg,rgba(0,0,0,0.54),rgba(0,0,0,0.2))
+}
+
+.navbar{
+
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.menu ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.menu{
+  flex-direction: row-reverse;
+}
+
+.menu ul li a{
+  text-decoration: none;
+  color: #fff;
+  text-transform:uppercase;
+  line-height: 36px;
+}
+
+.menu ul li:not(:last-child):after{
+  content: '';
+  height: 3px;
+  width: 0;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.5s;
+}
+
+.mat-raised-button{
+  line-height: 0px;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+span{
+  background: #6f0363;
+  height: 100%;
+  width: 0%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -10;
+  transition: 0.4s;
+  margin-top: 0;
+}
+
+.mat-raised-button:hover span{
+  width: 100%;
+}
+.menu ul li:hover::after{
+  width: 100%;
+}
+
+.navbar-collapsed span{
+  color: #fff;
+}
+
+
+.mat-icon, .mat-icon .matListIcon{
+  outline: none !important;
+}
+
+
+.navbar-toggler:hover{
+  text-decoration: none;
+  color:#fff
+}

@@ -1,0 +1,13 @@
+
+<mat-drawer-container autosize="true">
+  <mat-drawer #drawer mode="side" opened="true">
+    <app-sidenav (expand)="onExpanded($event)"></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <app-dashboard-header [expanded]="this.expandedDrawer" [user_name]="this.user_name"></app-dashboard-header>
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+

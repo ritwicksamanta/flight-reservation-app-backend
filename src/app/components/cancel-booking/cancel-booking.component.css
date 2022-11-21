@@ -1,0 +1,16 @@
+table{
+  caption-side: top;
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+}
+
+tr:nth-child(odd){
+  background-color: antiquewhite;
+}
+caption{
+  text-align: center;
+  font-family: cursive;
+  font-size: 24px;
+  margin-bottom: 16px;
+}

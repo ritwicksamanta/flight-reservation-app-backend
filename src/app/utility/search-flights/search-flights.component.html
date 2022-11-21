@@ -1,0 +1,33 @@
+<button type="button" mat-icon-button class="close-button" [mat-dialog-close]="true" [autofocus]="false" (click)="log('closed')">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<div mat-dialog-content>
+    <form [formGroup]="searchFlights" >
+      <mat-form-field appearance="outline">
+        <mat-label>From</mat-label>
+        <input matInput placeholder="Source" formControlName="from" appAutoFocus>
+        <mat-error *ngIf="searchFlights.get('from').invalid">This field is required </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Destination</mat-label>
+        <input matInput placeholder="Destination" formControlName="to">
+        <mat-error *ngIf="searchFlights.get('to').invalid">This field is required </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="date" [min]="_minDate" [disabled]="true" [style.color]="'blue'">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker [disabled]="false" inputmode="dd/MM/yyyy">
+        </mat-datepicker>
+        <mat-error *ngIf="searchFlights.get('date').invalid">{{'Please Enter a Valid Date'|uppercase}}</mat-error>
+      </mat-form-field>
+    </form>
+
+
+</div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="this.searchFlights.reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button mat-dialog-close [disabled]="!(searchFlights.valid)" color="primary" (click)="search(searchFlights.value)">{{"Search Flights"|uppercase}}</button>
+</div>
